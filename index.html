@@ -59,6 +59,8 @@
 
         let scrollFunction = function(n) {
 
+        // Сначала удаляем все классы из разметки
+
         for (let slide of slideAll) {
             slide.classList.remove('active');
             slide.classList.remove('slide-left');
@@ -67,6 +69,8 @@
 
         } 
 
+        // Добавляем соответствующие классы для левого, центрального и правого элемента и убираем у них
+        //  класс slide-under, который отвечает за сокрытие элемента
             slideAll[n+1].classList.remove('slide-under');
             slideAll[n+1].classList.add('active');
             slideAll[n].classList.remove('slide-under');
@@ -80,7 +84,7 @@
 
         rightArrow.addEventListener('click', function() {
 
-        if (currentElement == slideAll.length) {
+        if (currentElement == slideAll.length-1) {
                 currentElement = 0;
                 scrollFunction(currentElement);
             } else {
