@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Super Slider</title>
+</head>
+<body>
+    <section class="slider">
+        <div class="slider-area">
+
+            <img src="arrow.svg" alt="" width="36px" height="100px" class="arrow-1">
+            <div class="slide-container">
+                <img src="Slide-1.jpg" alt="" width="530px" height="320px" class="slide slide-1 slide-left">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-2.jpg" alt="" width="530px" height="320px" class="slide slide-2 active">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-3.png" alt="" width="530px" height="320px" class="slide slide-3 slide-right">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-4.jpg" alt="" width="530px" height="320px" class="slide slide-4 slide-right slide-under">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-5.jpg" alt="" width="530px" height="320px" class="slide slide-5 slide-right slide-under">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-6.jpg" alt="" width="530px" height="320px" class="slide slide-6 slide-right slide-under">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-7.png" alt="" width="530px" height="320px" class="slide slide-7 slide-right slide-under">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-8.jpg" alt="" width="530px" height="320px" class="slide slide-8 slide-right slide-under">
+            </div>
+            <div class="slide-container">
+                <img src="Slide-9.jpg" alt="" width="530px" height="320px" class="slide slide-9 slide-right slide-under">
+            </div>
+            
+            <img src="arrow.svg" alt="" width="36px" height="100px" class="arrow-2">
+        </div>
+    </section>
+    
+    <script>
+
+
+        let sliderArea = document.querySelector('.slider-area');
+        let leftArrow = document.querySelector('.arrow-1');
+        let rightArrow = document.querySelector('.arrow-2');
+        let slideAll = document.querySelectorAll('.slide');
+        let slide = document.querySelector('.slide');
+
+        
+
+        let currentElement = 0;
+
+        let scrollFunction = function(n) {
+
+        for (let slide of slideAll) {
+            slide.classList.remove('active');
+            slide.classList.remove('slide-left');
+            slide.classList.remove('slide-right');
+            slide.classList.add('slide-under');
+
+        } 
+
+            slideAll[n+1].classList.remove('slide-under');
+            slideAll[n+1].classList.add('active');
+            slideAll[n].classList.remove('slide-under');
+            slideAll[n].classList.add('slide-left');
+            slideAll[n-1].classList.add('slide-under','invisible');
+            slideAll[n+2].classList.add('slide-right');
+            slideAll[n+2].classList.remove('slide-under');
+
+            // console.log(slideAll[n+2]);
+        }
+
+        rightArrow.addEventListener('click', function() {
+
+        if (currentElement == slideAll.length) {
+                currentElement = 0;
+                scrollFunction(currentElement);
+            } else {
+                currentElement++
+                scrollFunction(currentElement);
+            }
+
+        });
+
+
+    </script>
+
+</body>
+</html>
