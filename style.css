@@ -4,23 +4,35 @@ body {
     margin: 0;
 }
 
+.slide {
+    border-radius: 25px;
+}
+
 .slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 900px;
+    /* width: 600px; */
+    /* width: 50vw; */
     max-height: 500px;
     margin: 200px auto 0;
 }
 
 .slider-area {
     position: relative;
-    width: 1100px;
+    width: 800px;
+
     align-items: center;
+    justify-content: space-between;
     display: flex;
     flex-wrap: nowrap;
-    transition: 1000ms all linear;
+    transition: 1000ms;
 }
 
 .arrow-1,
 .arrow-2 {
-    position: absolute;
+    /* position: absolute; */
     cursor: pointer;
     z-index: 1;
 }
@@ -31,50 +43,152 @@ body {
 
 .arrow-2 {
     transform: rotate(-90deg);
-    right: 0;
+    /* right: 0; */
 }
 
 .slide-left {
+    left: 0;
+    position: absolute;
     transform: perspective(320px) rotateY(15deg) scale(0.85);
     width: 430px;
-    margin-left: 60px;
-    transition: 1000ms all linear;
+    transition: 1000ms;
+
 }
+
+.slider-left-animation {
+    animation-duration: 1s;
+    animation-name: slide-left;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slide-left {
+    0% {
+        position: absolute;
+        transform: scale(0.95);
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 1000ms;
+    }
+    100% {
+        left: 0;
+        position: absolute;
+        transform: perspective(320px) rotateY(15deg) scale(0.85);
+        width: 430px;
+    }
+  }
 
 .active {
     position: absolute;
     transform: scale(0.95);
     z-index: 10;
-    justify-self: center;
-    left: 25%;
-    top: 0;
-    transition: 1000ms all linear;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 1000ms;
 }
 
+.slider-active-animation {
+    animation-duration: 1s;
+    animation-name: slide-active;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-active {
+    0% {
+        position: absolute;
+        right: 0;
+        transform: perspective(320px) rotateY(-15deg) scale(0.85);
+        width: 430px;
+        z-index: -1;
+    }
+    100% {
+        position: absolute;
+        transform: scale(0.95);
+        z-index: 10;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: 1000ms;
+    }
+  }
+
 .slide-right {
+    position: absolute;
+    right: 0;
     transform: perspective(320px) rotateY(-15deg) scale(0.85);
     width: 430px;
     z-index: -1;
     justify-self: end;
-    margin-left: 100px;
-    transition: 1000ms all linear;
-
+    transition: 1000ms;
 }
+
+.slider-right-animation {
+    animation-duration: 1s;
+    animation-name: slide-right;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-right {
+    0% {
+        position: absolute;
+        right: 10px;
+        transform: perspective(320px) rotateY(-15deg) scale(0.1);
+        width: 430px;
+        z-index: -1;
+    }
+    100% {
+        position: absolute;
+        right: 0;
+        transform: perspective(320px) rotateY(-15deg) scale(0.85);
+        width: 430px;
+        z-index: -1;
+    }
+  }
 
 .slide-under {
-    display: none;
-    opacity: 0;
-    transition: 1000ms all linear;
-}
-
-.dissapear {
+    position: absolute;
     transform: perspective(520px) rotateY(-25deg) translateX(430px);
     opacity: 0;
     width: 0;
     height: 0;
-    transition: 500ms all linear;
+    transition: 1000ms;
+}
+
+.dissapear { position: absolute;
+    transform: perspective(520px) rotateY(-25deg) translateX(430px);
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: 1000ms;
 }
 
 .invisible {
     color: black;
 }
+
+.new-block { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    margin: 300 auto;
+    width: 1200px;
+    height: 600px;
+    background-color: pink;
+}
+
+.inside {
+    margin-right: 20px;
+    margin-top: 50px;
+    width: 200px;
+    height: 150px;
+    background-color: rebeccapurple;
+    z-index: 10;
+}
+
+.click {
+    background-color: seagreen;
+}
+
