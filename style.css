@@ -27,7 +27,7 @@ body {
     justify-content: space-between;
     display: flex;
     flex-wrap: nowrap;
-    transition: 1000ms;
+    /*transition: 1000ms;*/
 }
 
 .arrow-1,
@@ -51,7 +51,7 @@ body {
     position: absolute;
     transform: perspective(320px) rotateY(15deg) scale(0.85);
     width: 430px;
-    transition: 1000ms;
+    /*transition: 1000ms;*/
 
 }
 
@@ -66,13 +66,37 @@ body {
     0% {
         position: absolute;
         transform: scale(0.95);
+        width: 530px;
         z-index: 10;
         left: 50%;
         transform: translateX(-50%);
-        transition: 1000ms;
     }
+
     100% {
-        left: 0;
+        /* left: 0; */
+        position: absolute;
+        transform: perspective(320px) rotateY(15deg) scale(0.85);
+        width: 430px;
+    }
+  }
+
+.slider-left-animation-prev {
+    animation-duration: 1s;
+    animation-name: slide-left-prev;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes slide-left-prev {
+    0% {
+        position: absolute;
+        opacity: 0;
+        left: 100px;
+        /*transition: 1000ms;*/
+    }
+
+    100% {
+        /* left: 0; */
         position: absolute;
         transform: perspective(320px) rotateY(15deg) scale(0.85);
         width: 430px;
@@ -83,10 +107,11 @@ body {
     position: absolute;
     transform: scale(0.95);
     z-index: 10;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: 1000ms;
+    right: 50%;
+    transform: translateX(50%);
+    /*transition: 1000ms;*/
 }
+
 
 .slider-active-animation {
     animation-duration: 1s;
@@ -102,13 +127,39 @@ body {
         width: 430px;
         z-index: -1;
     }
+
+    100% {
+        position: absolute;
+        transform: scale(0.95);
+        z-index: 10;
+        right: 50%;
+        transform: translateX(50%);
+        /*transition: 1000ms;*/
+    }
+  }
+
+.slider-active-animation-prev {
+    animation-duration: 1s;
+    animation-name: slide-active-prev;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-active-prev {
+    0% {
+        position: absolute;
+        left: 0;
+        transform: perspective(320px) rotateY(15deg) scale(0.85);
+        width: 430px;
+        z-index: -1;
+    }
+
     100% {
         position: absolute;
         transform: scale(0.95);
         z-index: 10;
         left: 50%;
         transform: translateX(-50%);
-        transition: 1000ms;
+        /*transition: 1000ms;*/
     }
   }
 
@@ -118,8 +169,7 @@ body {
     transform: perspective(320px) rotateY(-15deg) scale(0.85);
     width: 430px;
     z-index: -1;
-    justify-self: end;
-    transition: 1000ms;
+    /*transition: 1000ms;*/
 }
 
 .slider-right-animation {
@@ -131,11 +181,36 @@ body {
 @keyframes slide-right {
     0% {
         position: absolute;
-        right: 10px;
-        transform: perspective(320px) rotateY(-15deg) scale(0.1);
+        opacity: 0;
+        right: 100px;
+        /*transition: 1000ms;*/
+    }
+
+    100% {
+        position: absolute;
+        right: 0;
+        transform: perspective(320px) rotateY(-15deg) scale(0.85);
         width: 430px;
         z-index: -1;
     }
+  }
+
+.slider-right-animation-prev {
+    animation-duration: 1s;
+    animation-name: slide-right-prev;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-right-prev {
+    0% {
+        position: absolute;
+        width: 530px;
+        transform: scale(0.95);
+        z-index: 10;
+        right: 50%;
+        transform: translateX(50%);
+    }
+
     100% {
         position: absolute;
         right: 0;
@@ -147,48 +222,62 @@ body {
 
 .slide-under {
     position: absolute;
-    transform: perspective(520px) rotateY(-25deg) translateX(430px);
     opacity: 0;
-    width: 0;
-    height: 0;
-    transition: 1000ms;
+    height: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    /*transition: 1000ms;*/
 }
+
+.slider-under-animation {
+    animation-duration: 1s;
+    animation-name: slide-under;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-under {
+    0% {
+        left: 0;
+        position: absolute;
+        transform: perspective(320px) rotateY(15deg) scale(0.85);
+        width: 430px;
+        /*transition: 1000ms;*/
+    }
+    100% {
+        position: absolute;
+        opacity: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        /*transition: 1000ms;*/
+    }
+  }
+
+.slider-under-animation-prev {
+    animation-duration: 1s;
+    animation-name: slide-under-prev;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-under-prev {
+    0% {
+        position: absolute;
+        right: 0;
+        transform: perspective(320px) rotateY(-15deg) scale(0.85);
+        width: 430px;
+        z-index: -1;
+    }
+    100% {
+        position: absolute;
+        opacity: 0;
+        right: 50%;
+        z-index: -2;
+        transform: translateX(50%);
+    }
+  }
 
 .dissapear { position: absolute;
     transform: perspective(520px) rotateY(-25deg) translateX(430px);
     opacity: 0;
     width: 0;
     height: 0;
-    transition: 1000ms;
 }
-
-.invisible {
-    color: black;
-}
-
-.new-block { 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    position: absolute;
-    /* top: 50%; */
-    /* left: 50%; */
-    margin: 300 auto;
-    width: 1200px;
-    height: 600px;
-    background-color: pink;
-}
-
-.inside {
-    margin-right: 20px;
-    margin-top: 50px;
-    width: 200px;
-    height: 150px;
-    background-color: rebeccapurple;
-    z-index: 10;
-}
-
-.click {
-    background-color: seagreen;
-}
-

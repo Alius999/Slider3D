@@ -60,24 +60,24 @@
         let cloneNext = function(index) {
 
             for (let slideres of sliderArea.children) {
-                slideres.classList.remove('active');
-                slideres.classList.remove('slide-left');
-                slideres.classList.remove('slide-right');
-                slideres.classList.add('slide-under');
+                slideres.classList.remove('active','slider-active-animation','slider-active-animation-prev');
+                slideres.classList.remove('slide-left','slider-left-animation','slider-left-animation-prev');
+                slideres.classList.remove('slide-right','slider-right-animation','slider-right-animation-prev');
+                slideres.classList.add('slider-under-animation');
             }
             
             let childrens = sliderArea.children;
 
-            childrens[index-1].classList.add('slide-left');
-            childrens[index-1].classList.remove('slide-under');
+            childrens[index-1].classList.add('slide-left','slider-left-animation');
+            childrens[index-1].classList.remove('slide-under','slider-under-animation','slider-under-animation-prev');
 
-            childrens[index].classList.add('active');
-            childrens[index].classList.remove('slide-under');
+            childrens[index].classList.add('active','slider-active-animation');
+            childrens[index].classList.remove('slide-under','slider-under-animation','slider-under-animation-prev');
 
-            childrens[index+1].classList.remove('slide-under');
-            childrens[index+1].classList.add('slide-right');
+            childrens[index+1].classList.remove('slide-under','slider-under-animation','slider-under-animation-prev');
+            childrens[index+1].classList.add('slide-right','slider-right-animation');
 
-            childrens[index-2].classList.add('slide-under');
+            childrens[index-2].classList.add('slider-under-animation');
         }
 
         let currentElement = 1;
@@ -93,10 +93,6 @@
                 cloneNext(currentElement);
             }
         });
-
-
-
-
 
 // Левая кнопка 
 
@@ -117,24 +113,24 @@ let cloneFunctionLeft = function() {
     let clonePrev = function(index) {
 
         for (let slideres of sliderArea.children) {
-            slideres.classList.remove('active');
-            slideres.classList.remove('slide-left');
-            slideres.classList.remove('slide-right');
-            slideres.classList.add('slide-under');
+                slideres.classList.remove('active','slider-active-animation','slider-active-animation-prev');
+                slideres.classList.remove('slide-left','slider-left-animation','slider-left-animation-prev');
+                slideres.classList.remove('slide-right','slider-right-animation','slider-right-animation-prev');
+                slideres.classList.add('slider-under-animation-prev');
         }
 
     let childrens = sliderArea.children;
 
-            childrens[index+1].classList.add('slide-right');
-            childrens[index+1].classList.remove('slide-under');
+            childrens[index+1].classList.add('slide-right','slider-right-animation-prev');
+            childrens[index+1].classList.remove('slide-under','slider-under-animation-prev','slider-under-animation');
 
-            childrens[index-1].classList.add('slide-left');
-            childrens[index-1].classList.remove('slide-under');
+            childrens[index-1].classList.add('slide-left','slider-left-animation-prev');
+            childrens[index-1].classList.remove('slide-under','slider-under-animation-prev','slider-under-animation');
 
-            childrens[index].classList.remove('slide-under');
-            childrens[index].classList.add('active');
+            childrens[index].classList.remove('slide-under','slider-under-animation-prev','slider-under-animation');
+            childrens[index].classList.add('active','slider-active-animation-prev');
 
-            childrens[index+2].classList.add('slide-under');
+            childrens[index+2].classList.add('slider-under-animation-prev');
     }
 
         // let currentElement = 1;
